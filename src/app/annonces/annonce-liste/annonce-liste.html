@@ -1,0 +1,200 @@
+<p-toast></p-toast>
+
+<p-confirmdialog>
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-col items-center w-full gap-4 border-b border-surface-200 dark:border-surface-700">
+      <i [ngClass]="message.icon" class="!text-6xl text-primary-500"></i>
+      <p>{{ message.message }}</p>
+    </div>
+  </ng-template>
+</p-confirmdialog>
+
+<body>
+  <div class="layout">
+    <nav class="navbar">Navbar</nav>
+
+    <aside class="sidebar">Sidebar</aside>
+
+    <main class="content">
+      <!-- Header du tableau (en dehors de table-wrapper) -->
+      <div class="table-header">
+        <h2>Products</h2>
+        <button class="icon-btn add-btn" title="Add Product">
+          <i class="pi pi-plus"></i> Add Product
+        </button>
+      </div>
+
+      <!-- Conteneur du tableau uniquement -->
+      <div class="table-wrapper">
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th colspan="6">
+                <div class="header-actions">
+                  <div class="header-left">
+                    <button class="icon-btn">
+                      <i class="pi pi-filter"></i> Filter
+                    </button>
+                    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterTable()" />
+                  </div>
+                  <div class="header-right">
+                    <button class="icon-btn" title="Edit">
+                      <i class="pi pi-pencil"></i>
+                    </button>
+                    <button class="icon-btn" (click)="confirmDelete(annonces[0])">
+                      <i class="pi pi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th><input type="checkbox" id="select-all" /> Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Reviews</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ligne produit répétée -->
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <tr>
+              <td class="image-cell" data-label="Image">
+                <input type="checkbox" />
+                <img src="https://primefaces.org/cdn/primeng/images/demo/product/bamboo-watch.jpg" alt="Bamboo Watch" />
+              </td>
+              <td data-label="Name">Bamboo Watch</td>
+              <td data-label="Price">$65.00</td>
+              <td data-label="Category">Accessories</td>
+              <td data-label="Reviews" class="reviews">
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star-fill"></i>
+                <i class="pi pi-star"></i>
+              </td>
+              <td data-label="Status"><span class="status instock">INSTOCK</span></td>
+            </tr>
+            <!-- ...répéter si besoin -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6">
+                <div class="paginator-container">
+                  <p-paginator
+                    (onPageChange)="onPageChange($event)"
+                    [rowsPerPageOptions]="[4, 20, 30]"
+                    styleClass="custom-paginator"
+                  ></p-paginator>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
