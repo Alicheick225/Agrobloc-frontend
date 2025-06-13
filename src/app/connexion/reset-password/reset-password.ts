@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'app-reset-password',
-  imports: [],
   templateUrl: './reset-password.html',
-  styleUrl: './reset-password.css'
+  styleUrls: ['./reset-password.css'],
+  imports: [CommonModule, FormsModule]
 })
 export class ResetPassword {
+  resetData = {
+    phone: ''
+  };
 
+  onReset() {
+    console.log('Réinitialisation demandée pour :', this.resetData.phone);
+    alert('Un code de réinitialisation a été envoyé (exemple)');
+  }
 }
+
+
+

@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="login-container">
+    <h2>Connexion</h2>
+  
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        [(ngModel)]="loginData.email"
+        placeholder="Entrez votre email"
+      />
+  
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        [(ngModel)]="loginData.password"
+        placeholder="***********"
+      />
+  
+      <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+    </form>
+  
+    <p class="bottom-text">
+      Vous n'avez pas de compte ? <a href="#">Inscrivez-vous</a>
+    </p>
+  
+    <div class="social-login">
+      <p>Ou connectez-vous avec :</p>
+      <button class="google" (click)="continueWith('Google')">
+        <i class="pi pi-google"></i>
+        Google
+      </button>
+      <button class="facebook" (click)="continueWith('Facebook')">
+        <i class="pi pi-facebook"></i>
+        Facebook
+      </button>
+    </div>
+  </div>
+  

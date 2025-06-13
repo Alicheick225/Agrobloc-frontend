@@ -1,1 +1,67 @@
-<p>inscription works!</p>
+<div class="register-container">
+    <h2>Inscription</h2>
+  
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <label for="username">Nom utilisateur</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="user.username"
+        required
+        placeholder="Entrez votre nom utilisateur"
+      />
+  
+      <label for="phone">Numéro de téléphone</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        [(ngModel)]="user.phone"
+        required
+        placeholder="Entrez votre numéro de téléphone"
+      />
+  
+      <label for="profil">Profil</label>
+      <select
+        id="profil"
+        name="profil"
+        [(ngModel)]="user.profil"
+        required
+      >
+        <option value="" disabled selected>Sélectionner votre profil</option>
+        <option value="utilisateur">Utilisateur</option>
+        <option value="admin">Producteur</option>
+      </select>
+  
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+        minlength="6"
+        placeholder="*************"
+      />
+  
+      <button type="submit" [disabled]="registerForm.invalid">S’inscrire</button>
+    </form>
+  
+    <p class="bottom-text">
+      Avez-vous un compte ? <a href="#">Connectez-vous</a>
+    </p>
+  
+    <div class="social-login">
+      <p>Ou créez un compte en utilisant :</p>
+      <button class="google" (click)="continueWith('Google')">
+        <i class="pi pi-google"></i>
+        Continue with Google
+      </button>
+      <button class="facebook" (click)="continueWith('Facebook')">
+        <i class="pi pi-facebook" ></i>
+                Continue with Facebook
+      </button>
+    </div>
+  </div>
+  
